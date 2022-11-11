@@ -21,4 +21,15 @@ export const useSingleServices = (data, setData, url) => {
     }
 };
 
+
+export const useReviews = (data, setData, id) => {
+    useEffect(() => {
+        axios.get(`http://localhost:8000/photographer-portfolio/reviews/getPersonsReviews/${id}`)
+            .then(data => console.log(data))
+    }, [setData, id])
+    return {
+        data
+    }
+}
+
 export default useServices;
