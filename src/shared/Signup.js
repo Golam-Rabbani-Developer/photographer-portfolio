@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../firebaseinit';
+import { handleRegister } from '../utilitis/useServices';
 import Loading from './Loading';
 import Socials from './Socials';
 
@@ -11,6 +11,7 @@ import Socials from './Socials';
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
     const [name, setName] = useState('')
     const navigate = useNavigate()
     const [createUserWithEmailAndPassword, user, loading, error,
@@ -22,20 +23,21 @@ const Signup = () => {
     const from = location.state?.from?.pathname || '/'
 
 
-    //adding loading spinner
+    // adding loading spinner
     if (loading) {
-        return <Loading type="spokes" color="red"></Loading>
-    }
-
-    // checking the user 
-    if (user) {
-        navigate(from, { replace: true })
+        <Loading type="spokes" color="red"></Loading>
     }
 
 
     const hanldeLogin = (e) => {
         e.preventDefault()
+        const data = { name, email, password }
         createUserWithEmailAndPassword(email, password)
+            .then(res => {
+                if (res) {
+                    handleRegister(data, setMessage, navigate, from)
+                }
+            })
     }
 
     return (
@@ -48,7 +50,8 @@ const Signup = () => {
 
                 <input onBlur={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className="input min-w-full input-bordered w-full max-w-xs" />
                 <button className="btn btn-primary w-full">Sign Up</button>
-                <p className='mt-3 text-red-500 font-bld'>{error && error?.message}</p>
+                <p className='mt-3 text-red-500 font-bold text-center'>{error && error?.message}</p>
+                <p className='mt-3 text-red-500 font-bold text-center'>{message && message}</p>
             </form>
             <p onClick={() => navigate('/login')} className='cursor-pointer  mt-3'>Already User ? Please Login</p>
             <Socials></Socials>

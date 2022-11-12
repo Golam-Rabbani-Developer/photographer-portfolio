@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../firebaseinit';
 import Socials from './Socials';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from './Loading';
+import { handleLogin } from '../utilitis/useServices';
 
 
 const Login = () => {
     const [email, setEmail] = useState("")
+    const [message, setMessage] = useState('')
     const [password, setPassword] = useState("")
     const [sendPasswordResetEmail, sending, reseterror] = useSendPasswordResetEmail(auth);
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
@@ -18,11 +19,6 @@ const Login = () => {
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
 
-    // checking the user 
-    if (user) {
-        navigate(from, { replace: true })
-    }
-
     // adding the loading spinner 
     if (sending || loading) {
         return <Loading type="spokes" color="red"></Loading>
@@ -30,7 +26,13 @@ const Login = () => {
 
     const hanldeLogin = (e) => {
         e.preventDefault()
-        signInWithEmailAndPassword(auth, email, password)
+        const data = { email, password }
+        signInWithEmailAndPassword(email, password)
+            .then(res => {
+                if (res) {
+                    handleLogin(data, setMessage, navigate, from)
+                }
+            })
     }
 
     return (
@@ -46,6 +48,7 @@ const Login = () => {
                 <button className="btn btn-primary w-full">Login</button>
                 <p onClick={() => navigate('/signup')} className='cursor-pointer  mt-3 text-center'>Now to Creative Mind ? Please SignUp</p>
                 <p className='text-red-500 font-bold mt-4'>{reseterror || error ? error?.message || reseterror?.message : ""}</p>
+                <p className='mt-3 text-red-500 font-bold text-center'>{message && message}</p>
             </form>
             <Socials></Socials>
         </div>

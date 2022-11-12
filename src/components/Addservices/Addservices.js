@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebaseinit';
 import './Addservices.css'
-import Header from '../../shared/Header';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import GlobalBanner from '../GlobalBanner/GlobalBanner';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../../App';
 
 
 const Addservices = () => {
+    const [dark, setDark] = useContext(ThemeContext)
     const { register, formState: { errors }, handleSubmit } = useForm();
     let formData = new FormData();
     const navigate = useNavigate()
@@ -41,7 +41,7 @@ const Addservices = () => {
 
     return (
         <div >
-            <div className='p-6 z-50 bg-white'>
+            <div className={`p-6 z-50 ${dark ? 'bg-black' : 'bg-white'}`}>
                 <h2 className='text-3xl font-bold z-40 text-center font-mono'>ADD SERVICES</h2>
                 <div className='items-center mx-auto md:max-w-[500px] lg:max-w-[700px] '>
                     <form onSubmit={handleSubmit(onSubmit)}>

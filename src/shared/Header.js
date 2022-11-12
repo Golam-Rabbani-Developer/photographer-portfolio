@@ -1,12 +1,20 @@
 import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BsMoonStars } from 'react-icons/bs'
 import { signOut } from 'firebase/auth'
 import Loading from './Loading';
 import { ThemeContext } from '../App';
 import auth from '../firebaseinit';
+import setAuthToken from '../utilitis/setAuthtoken';
 
+
+
+const token = JSON.parse(localStorage.getItem('token'))
+
+if (token) {
+    setAuthToken(token)
+}
 
 const Header = () => {
     const [user, loading] = useAuthState(auth)

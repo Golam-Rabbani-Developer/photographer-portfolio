@@ -2,36 +2,42 @@ import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../firebaseinit';
 
 const ReviewSender = ({ id }) => {
     const [user] = useAuthState(auth)
+    const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     let formData = new FormData();
     const apikey = '28eb00c7dfdf689359a738f32eec679d';
 
 
     const onSubmit = (data) => {
-        const image = data.picture[0]
-        formData.append("image", image)
-        axios.post(`https://api.imgbb.com/1/upload?key=${apikey}`, formData)
-            .then(result => {
-                const picture = result.data.data.url;
-                if (picture) {
-                    data.picture = picture;
-                    data.id = id;
-                 axios.post('http://localhost:8000/photographer-portfolio/reviews/sendReviews', data)
-                        .then(res => {
-                            if (res.statusText === 'OK') {
-                                toast("You have added a review successfully")
-                                reset()
-                            }
-                        })
-                        .catch(err => console.log(err))
-                }
-            })
+        if (!user) {
+            navigate('/login')
+        } else {
+            const image = data.picture[0]
+            formData.append("image", image)
+            axios.post(`https://api.imgbb.com/1/upload?key=${apikey}`, formData)
+                .then(result => {
+                    const picture = result.data.data.url;
+                    if (picture) {
+                        data.picture = picture;
+                        data.id = id;
+                        axios.post('http://localhost:8000/photographer-portfolio/reviews/sendReviews', data)
+                            .then(res => {
+                                if (res.statusText === 'OK') {
+                                    toast("You have added a review successfully")
+                                    reset()
+                                }
+                            })
+                            .catch(err => console.log(err))
+                    }
+                })
+        }
+
     };
 
     return (
