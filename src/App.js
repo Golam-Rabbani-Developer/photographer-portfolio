@@ -9,6 +9,7 @@ import Signup from "./shared/Signup";
 import ServiceDetail from "./Pages/ServiceDetail";
 import AllServices from "./Pages/AllServices";
 import Reviews from "./Pages/Reviews";
+import EditReview from "./components/EditReview";
 
 export const ThemeContext = React.createContext('theme')
 
@@ -20,10 +21,12 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home></Home>} />
+          <Route path="/home" element={<Home></Home>} />
           <Route path='service/:id' element={<ServiceDetail />} />
           <Route path='/addservices' element={<ServiceAdd />} />
           <Route path='/service' element={<AllServices />} />
           <Route path='/reviews' element={<Reviews></Reviews>} />
+          <Route path='reviews/:id' element={<EditReview></EditReview>} />
           <Route path="/login" element={<Login></Login>} />
           <Route path="/signup" element={<Signup></Signup>} />
           <Route path='*' element={<Notfound></Notfound>} />

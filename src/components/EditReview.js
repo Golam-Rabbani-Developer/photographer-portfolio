@@ -2,11 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../firebaseinit';
 
-const ReviewSender = ({ id }) => {
+const EditReview = () => {
+    const { id } = useParams()
+    console.log(id)
+    const navigate = useNavigate()
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     let formData = new FormData();
@@ -21,11 +24,11 @@ const ReviewSender = ({ id }) => {
                 const picture = result.data.data.url;
                 if (picture) {
                     data.picture = picture;
-                    data.id = id;
-                 axios.post('http://localhost:8000/photographer-portfolio/reviews/sendReviews', data)
+                    axios.put(`http://localhost:8000/photographer-portfolio/reviews/editReview/${id}`, data)
                         .then(res => {
                             if (res.statusText === 'OK') {
                                 toast("You have added a review successfully")
+                                navigate('/reviews')
                                 reset()
                             }
                         })
@@ -79,4 +82,4 @@ const ReviewSender = ({ id }) => {
     );
 };
 
-export default ReviewSender;
+export default EditReview;

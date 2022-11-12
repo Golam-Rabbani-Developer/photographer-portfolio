@@ -20,7 +20,7 @@ const Services = () => {
                             <img src={service.picture} alt="" />
                             <h3 className='text-2xl font-bold text-gray-400 mt-4 font-mono'>{service.name}</h3>
                             <p className='text-slate-600 text-lg text-start mt-4'>{service.description.length < 100 ? service.description : `${service.description.slice(0, 100)}....`}</p>
-                            <div onClick={() => navigate(`service/${service._id}`)} className="btn btn-outline min-w-[200px] z-50 border-gray-700 hover:bg-gray-500 hover:text-white rounded-none btn-lg mt-5 capitalize font-bold text-xl">See Detail</div>
+                            <div onClick={() => navigate(`/service/${service._id}`)} className="btn btn-outline min-w-[200px] z-50 border-gray-700 hover:bg-gray-500 hover:text-white rounded-none btn-lg mt-5 capitalize font-bold text-xl">See Detail</div>
                         </div>
                     </div>)
                 }
