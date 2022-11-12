@@ -8,12 +8,12 @@ const questionData = [
 
 const Questions = () => {
     return (
-        <div className='mx-auto w-[94%] md:w-[85%]'>
+        <div className='mx-auto w-[94%] md:w-[85%] pt-20'>
             {
-                questionData.map(question =>
+                questionData.map((question, index) =>
                     <div>
-                        <p className='font-bold text-xl'>{question.name}</p>
-                        <p className='text-lg mt-5'>{question.ans}</p>
+                        <p className='font-bold text-xl'>{index + 1}. {question.name}</p>
+                        <p className='text-lg mt-5'>--- {question.ans}</p>
                     </div>
                 )
             }

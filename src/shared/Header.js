@@ -19,8 +19,12 @@ const Header = () => {
     const links = <>
         <li><Link className='text-xl ' to='/'>Home</Link></li>
         <li><Link className='text-xl ' to='/service'>Services</Link></li>
-        <li><Link className='text-xl ' to='/addservices'>Add Services</Link></li>
-        <li><Link className='text-xl ' to='/reviews'>My Reviews</Link></li>
+        {
+            user && <>
+                <li><Link className='text-xl ' to='/addservices'>Add Services</Link></li>
+                <li><Link className='text-xl ' to='/reviews'>My Reviews</Link></li>
+            </>
+        }
         <li><Link className='text-xl ' to='/blogs'>Blogs</Link></li>
     </>
     return (

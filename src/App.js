@@ -10,6 +10,7 @@ import ServiceDetail from "./Pages/ServiceDetail";
 import AllServices from "./Pages/AllServices";
 import Reviews from "./Pages/Reviews";
 import EditReview from "./components/EditReview";
+import Blogs from "./Pages/Blogs";
 
 export const ThemeContext = React.createContext('theme')
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/home" element={<Home></Home>} />
           <Route path='service/:id' element={<ServiceDetail />} />
           <Route path='/addservices' element={<ServiceAdd />} />
+          <Route path='/blogs' element={<Blogs></Blogs>} />
           <Route path='/service' element={<AllServices />} />
           <Route path='/reviews' element={<Reviews></Reviews>} />
           <Route path='reviews/:id' element={<EditReview></EditReview>} />

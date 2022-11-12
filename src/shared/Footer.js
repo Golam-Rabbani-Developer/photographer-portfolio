@@ -13,7 +13,7 @@ const Footer = () => {
                 <span className='border border-gray-600 text-gray-600 inline-block rounded-full p-4 hover:bg-gray-600 hover:text-white'><BsLinkedin /></span>
                 <span className='border border-gray-600 text-gray-600 inline-block rounded-full p-4 hover:bg-gray-600 hover:text-white'><BsTwitter /></span>
             </div>
-            <p className='text-sm'>© Copyright 2020 Hernán Torres</p>
+            <p className='text-sm'>© Copyright 2020 Shohan</p>
         </div>
     );
 };
