@@ -25,11 +25,23 @@ export const useSingleServices = (data, setData, url) => {
 export const useReviews = (data, setData, id) => {
     useEffect(() => {
         axios.get(`http://localhost:8000/photographer-portfolio/reviews/getPersonsReviews/${id}`)
-            .then(data => console.log(data))
+            .then(data => setData(data.data))
     }, [setData, id])
     return {
         data
     }
 }
 
+
+export const usePersonsReviews = (data, setData, email) => {
+    useEffect(() => {
+        axios.get(`http://localhost:8000/photographer-portfolio/reviews/getSinglePersonsReviews/${email}`)
+            .then(data => setData(data.data))
+    }, [setData, email])
+    return {
+        data
+    }
+}
+
 export default useServices;
+

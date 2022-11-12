@@ -6,11 +6,14 @@ import './Addservices.css'
 import Header from '../../shared/Header';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import GlobalBanner from '../GlobalBanner/GlobalBanner';
+import { useNavigate } from 'react-router-dom';
 
 
 const Addservices = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     let formData = new FormData();
+    const navigate = useNavigate()
     const apikey = '28eb00c7dfdf689359a738f32eec679d';
     const [user] = useAuthState(auth);
     const onSubmit = (data) => {
@@ -24,24 +27,20 @@ const Addservices = () => {
                     data.reviews = [];
                     axios.post('http://localhost:8000/photographer-portfolio/services/addservice', data)
                         .then(res => {
-                            if (res.data.status(200)) {
+                            if (res.status) {
                                 toast("You have added a service successfully")
+                                navigate('/')
                             }
                         })
                         .catch(err => console.log(err))
                 }
             })
-        console.log(data)
     };
 
 
 
     return (
         <div >
-            <div className='addservice flex items-center justify-center sticky top-1 -z-10'>
-                <h2 className='text-3xl font-bold z-40 text-white font-mono'><span className='border-b-2'>Services/Add New</span></h2>
-            </div>
-
             <div className='p-6 z-50 bg-white'>
                 <h2 className='text-3xl font-bold z-40 text-center font-mono'>ADD SERVICES</h2>
                 <div className='items-center mx-auto md:max-w-[500px] lg:max-w-[700px] '>

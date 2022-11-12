@@ -1,0 +1,16 @@
+.gloabal_banner {
+    background-image: url(https://i.ibb.co/G5vkbWc/photo-3-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
+
+.gloabal_banner::before {
+    background-color: rgba(33, 22, 22, 0);
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

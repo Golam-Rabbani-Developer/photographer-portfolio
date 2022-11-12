@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
-import SingleService from "./components/SingleService";
 import Home from "./Pages/Home";
 import ServiceAdd from "./Pages/ServiceAdd";
 import Notfound from "./Pages/Notfound";
 import Login from "./shared/Login";
 import Signup from "./shared/Signup";
+import ServiceDetail from "./Pages/ServiceDetail";
+import AllServices from "./Pages/AllServices";
+import Reviews from "./Pages/Reviews";
 
 export const ThemeContext = React.createContext('theme')
 
@@ -18,8 +20,10 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home></Home>} />
-          <Route path='service/:id' element={<SingleService />} />
+          <Route path='service/:id' element={<ServiceDetail />} />
           <Route path='/addservices' element={<ServiceAdd />} />
+          <Route path='/service' element={<AllServices />} />
+          <Route path='/reviews' element={<Reviews></Reviews>} />
           <Route path="/login" element={<Login></Login>} />
           <Route path="/signup" element={<Signup></Signup>} />
           <Route path='*' element={<Notfound></Notfound>} />

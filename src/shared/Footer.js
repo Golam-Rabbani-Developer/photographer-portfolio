@@ -2,8 +2,8 @@ import React from 'react';
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs'
 const Footer = () => {
     return (
-        <div className=' mt-24 md:w-[85%] mx-auto text-center space-y-5'>
-            {/* <div className='w-[400px] lg:w-[500px] h-[1px] bg-gray-500 mt-20 mx-auto  mb-12'></div> */}
+        <div className=' pt-24 flex items-center justify-center flex-col mx-auto text-center space-y-5 bg-white'>
+            <div className='w-[400px] lg:w-[500px] h-[1px] bg-gray-500 mt-20 mx-auto  mb-12'></div>
             <h2 className='text-4xl font-extrabold font-dancing'>@ ..Shohan.. @</h2>
             <p className='text-gray-600 text-xl font-bold'>Email : shoan@gmail.com</p>
             <p className='text-gray-600 text-xl font-bold'>Phone : +880-8236482734</p>

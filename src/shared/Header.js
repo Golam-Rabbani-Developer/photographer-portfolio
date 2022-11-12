@@ -18,13 +18,13 @@ const Header = () => {
     }
 
     const links = <>
-        <li><Link className='text-xl ' to='/courses'>Services</Link></li>
+        <li><Link className='text-xl ' to='/service'>Services</Link></li>
         <li><Link className='text-xl ' to='/addservices'>Add Services</Link></li>
+        <li><Link className='text-xl ' to='/reviews'>My Reviews</Link></li>
         <li><Link className='text-xl ' to='/blogs'>Blogs</Link></li>
-
     </>
     return (
-        <div className={`w-[95%] mx-auto md:w-[85%] z-50 bg-none absolute top-0 md:left-24 text-white `}>
+        <div className={`w-[95%] mx-auto md:w-[85%] z-50 bg-none absolute top-0 md:left-24 text-white font-poppins`}>
             <div className="navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
