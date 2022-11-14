@@ -24,7 +24,7 @@ const Socials = () => {
                 if (res) {
                     if (googleuser) {
                         const newuser = googleuser.user;
-                        const data = { name: newuser.displayName, email: newuser.email, password: newuser.accessToken.slice(0, 20) }
+                        const data = { name: newuser.displayName, email: newuser.email, password: 'googleuser' }
                         handleRegister(data, setMessage, navigate, from)
                         navigate(from, { replace: true })
                     }
