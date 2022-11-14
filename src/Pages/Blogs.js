@@ -4,11 +4,12 @@ import Questions from '../components/Questions';
 import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 
+
 const Blogs = () => {
     return (
         <div>
             <Header></Header>
-            <GlobalBanner></GlobalBanner>
+            <GlobalBanner h2='Blogs' h3='Read All Blogs Here' img='https://i.ibb.co/0YGfHfr/banner-02-1.jpg'></GlobalBanner>
             <div className='bg-white'>
                 <Questions></Questions>
             </div>

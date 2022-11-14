@@ -1,10 +1,13 @@
 import React from 'react';
 import './GlobalBanner.css'
 
-const GlobalBanner = () => {
+const GlobalBanner = ({ h2, h3, img }) => {
+
     return (
-        <div className='gloabal_banner flex items-center justify-center sticky top-1 -z-10'>
-            <h2 className='text-3xl font-bold z-40 text-white font-mono'><span className='border-b-2'>Services/Add New</span></h2>
+        <div className='global_banner flex justify-center items-center flex-col h-[50vh] md:h-[60vh]'>
+            <img className='img-fluid h-[50vh] md:h-[60vh] w-[100%]' src={img} alt="" />
+            <h2 style={{ zIndex: "99" }} className='global_banner_title text-4xl font-bold text-white'><span className='rounded-md border-b-4'>{h2}</span></h2>
+            <h3 style={{ zIndex: "99" }} className='global_banner_title  mt-14 text-2xl font-bold text-white'>{h3}</h3>
         </div>
     );
 };

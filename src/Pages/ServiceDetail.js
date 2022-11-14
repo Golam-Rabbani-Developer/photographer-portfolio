@@ -4,11 +4,13 @@ import SingleService from '../components/SingleService';
 import Footer from '../shared/Footer';
 import Header from '../shared/Header';
 
+
+
 const ServiceDetail = () => {
     return (
         <div className=''>
             <Header></Header>
-            <GlobalBanner></GlobalBanner>
+            <GlobalBanner h2='Service' h3='Book Your Service Now' img='https://i.ibb.co/6rkyBd8/banner-05-1.jpg'></GlobalBanner>
             <SingleService></SingleService>
             <Footer></Footer>
         </div>

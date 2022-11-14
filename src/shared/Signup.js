@@ -41,20 +41,25 @@ const Signup = () => {
     }
 
     return (
-        <div className='flex items-center flex-col justify-center w-[430px] mx-auto p-10 border rounded-md mt-32'>
-            <h2 className='text-3xl font-bold mb-8'>Sign Up</h2>
-            <form onSubmit={hanldeLogin} className=' space-y-3'>
-                <input onBlur={(e) => setName(e.target.value)} type="text" placeholder="Name" className="input min-w-full input-bordered w-full max-w-xs" />
+        <div className='grid grid-cols-12 gap-0 min-h-screen'>
+            <div className='flex items-center flex-col justify-center mx-auto p-10 border rounded-md md:col-span-4 order-2 lg:order-1 col-span-12'>
+                <h2 className='text-3xl font-bold mb-8'>Sign Up</h2>
+                <form onSubmit={hanldeLogin} className=' space-y-3'>
+                    <input onBlur={(e) => setName(e.target.value)} type="text" placeholder="Name" className="input min-w-full input-bordered w-full max-w-xs" />
 
-                <input onBlur={(e) => setEmail(e.target.value)} type="email" placeholder="Email" className="input min-w-full input-bordered w-full max-w-xs" />
+                    <input onBlur={(e) => setEmail(e.target.value)} type="email" placeholder="Email" className="input min-w-full input-bordered w-full max-w-xs" />
 
-                <input onBlur={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className="input min-w-full input-bordered w-full max-w-xs" />
-                <button className="btn btn-primary w-full">Sign Up</button>
-                <p className='mt-3 text-red-500 font-bold text-center'>{error && error?.message}</p>
-                <p className='mt-3 text-red-500 font-bold text-center'>{message && message}</p>
-            </form>
-            <p onClick={() => navigate('/login')} className='cursor-pointer  mt-3'>Already User ? Please Login</p>
-            <Socials></Socials>
+                    <input onBlur={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className="input min-w-full input-bordered w-full max-w-xs" />
+                    <button className="btn btn-primary w-full">Sign Up</button>
+                    <p className='mt-3 text-red-500 font-bold text-center'>{error && error?.message}</p>
+                    <p className='mt-3 text-red-500 font-bold text-center'>{message && message}</p>
+                </form>
+                <p onClick={() => navigate('/login')} className='cursor-pointer  mt-3'>Already User ? Please Login</p>
+                <Socials></Socials>
+            </div>
+            <div className='hidden md:block md:col-span-8 order-1 md:order-2'>
+                <img className='w-[100%] min-h-screen' src="https://i.ibb.co/6FzfPhj/register-01-1.webp" alt="" />
+            </div>
         </div>
     );
 };

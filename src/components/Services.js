@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HiArrowRightCircle } from 'react-icons/hi2'
 import useServices from '../utilitis/useServices';
+import Loading from 'react-loading';
 
 const Services = () => {
     const url = `https://photographer-portfolio-server-sygs.vercel.app/photographer-portfolio/services/getAllService`;
@@ -10,6 +11,10 @@ const Services = () => {
     const [services, setServices] = useState([]);
     const { data } = useServices(services, setServices, location.pathname === '/' || location.pathname === '/home' ? url2 : url);
     const navigate = useNavigate();
+
+    if (!data) {
+        <Loading type='spokes' color='black'></Loading>
+    }
     return (
         <div className=' text-center w-[95%] mx-auto md:w-[60%] pb-20 relative '>
             <h2 className='text-3xl font-bold text-gray-600'>{location.pathname === '/service' || 'History Of my Services'}</h2>
@@ -25,7 +30,9 @@ const Services = () => {
                     </div>)
                 }
             </div>
-            <div onClick={() => navigate(`/service`)} className="btn border-0 btn-outline min-w-[200px] z-50 hover:bg-gray-500 hover:text-white rounded-none btn-lg mt-5 capitalize font-bold text-xl md:absolute top-[700px] right-[1px] space-x-2"><span>See All Services</span> <span className='text-2xl'><HiArrowRightCircle /></span></div>
+            {
+                location.pathname === '/service' || <div onClick={() => navigate(`/service`)} className="btn border-0 btn-outline min-w-[200px] z-50 hover:bg-gray-500 hover:text-white rounded-none btn-lg mt-5 capitalize font-bold text-xl md:absolute top-[700px] right-[1px] space-x-2"><span>See All Services</span> <span className='text-2xl'><HiArrowRightCircle /></span></div>
+            }
         </div>
     );
 };

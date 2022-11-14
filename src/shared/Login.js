@@ -35,22 +35,28 @@ const Login = () => {
             })
     }
 
+
     return (
-        <div className='flex items-center flex-col justify-center w-[430px] mx-auto p-10 border rounded-md mt-40'>
-            <h2 className='text-3xl font-bold mb-8'>Login</h2>
-            <form onSubmit={hanldeLogin} className=' space-y-3'>
-                <input onBlur={(e) => setEmail(e.target.value)} type="email" placeholder="Email" className="input min-w-full input-bordered w-full max-w-xs" />
-                {/* <p>{email || "Please Provide Email"}</p> */}
-                <input onBlur={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className="input min-w-full input-bordered w-full max-w-xs" />
-                <p onClick={async () => {
-                    email ? await sendPasswordResetEmail(email) : alert("Please Provide Email")
-                }} className='text-end cursor-pointer'>Forget Password</p>
-                <button className="btn btn-primary w-full">Login</button>
-                <p onClick={() => navigate('/signup')} className='cursor-pointer  mt-3 text-center'>Now to Creative Mind ? Please SignUp</p>
-                <p className='text-red-500 font-bold mt-4'>{reseterror || error ? error?.message || reseterror?.message : ""}</p>
-                <p className='mt-3 text-red-500 font-bold text-center'>{message && message}</p>
-            </form>
-            <Socials></Socials>
+        <div className='grid grid-cols-12 gap-0 min-h-screen'>
+            <div className='flex items-center flex-col justify-center mx-auto p-10 border rounded-md md:col-span-4 order-2 lg:order-1 col-span-12 '>
+                <h2 className='text-3xl font-bold mb-8 '>Login</h2>
+                <form onSubmit={hanldeLogin} className=' space-y-3'>
+                    <input onBlur={(e) => setEmail(e.target.value)} type="email" placeholder="Email" className="input min-w-full input-bordered w-full max-w-xs" />
+                    {/* <p>{email || "Please Provide Email"}</p> */}
+                    <input onBlur={(e) => setPassword(e.target.value)} type="password" placeholder="Password" className="input min-w-full input-bordered w-full max-w-xs" />
+                    <p onClick={async () => {
+                        email ? await sendPasswordResetEmail(email) : alert("Please Provide Email")
+                    }} className='text-end cursor-pointer'>Forget Password</p>
+                    <button className="btn  w-full">Login</button>
+                    <p onClick={() => navigate('/signup')} className='cursor-pointer  mt-3 text-center'>Now to Creative Mind ? Please SignUp</p>
+                    <p className='text-red-500 font-bold mt-4'>{reseterror || error ? error?.message || reseterror?.message : ""}</p>
+                    <p className='mt-3 text-red-500 font-bold text-center'>{message && message}</p>
+                </form>
+                <Socials></Socials>
+            </div>
+            <div className='hidden md:block md:col-span-8 order-1 md:order-2'>
+                <img className='w-[100%] min-h-screen' src="https://i.ibb.co/353DGVg/login-01-1.jpg" alt="" />
+            </div>
         </div>
     );
 };
