@@ -8,6 +8,7 @@ import auth from '../firebaseinit';
 
 const ReviewSender = ({ id }) => {
     const [user] = useAuthState(auth)
+    console.log(user)
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     let formData = new FormData();
@@ -18,6 +19,7 @@ const ReviewSender = ({ id }) => {
         if (!user) {
             navigate('/login')
         } else {
+
             const image = data.picture[0]
             formData.append("image", image)
             axios.post(`https://api.imgbb.com/1/upload?key=${apikey}`, formData)
@@ -26,7 +28,7 @@ const ReviewSender = ({ id }) => {
                     if (picture) {
                         data.picture = picture;
                         data.id = id;
-                        axios.post('http://localhost:8000/photographer-portfolio/reviews/sendReviews', data)
+                        axios.post('https://photographer-portfolio-server-sygs.vercel.app/photographer-portfolio/reviews/sendReviews', data)
                             .then(res => {
                                 if (res.statusText === 'OK') {
                                     toast("You have added a review successfully")

@@ -24,7 +24,7 @@ const EditReview = () => {
                 const picture = result.data.data.url;
                 if (picture) {
                     data.picture = picture;
-                    axios.put(`http://localhost:8000/photographer-portfolio/reviews/editReview/${id}`, data)
+                    axios.put(`https://photographer-portfolio-server-sygs.vercel.app/photographer-portfolio/reviews/editReview/${id}`, data)
                         .then(res => {
                             if (res.statusText === 'OK') {
                                 toast("You have added a review successfully")

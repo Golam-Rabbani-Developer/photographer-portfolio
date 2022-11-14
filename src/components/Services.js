@@ -4,8 +4,8 @@ import { HiArrowRightCircle } from 'react-icons/hi2'
 import useServices from '../utilitis/useServices';
 
 const Services = () => {
-    const url = `http://localhost:8000/photographer-portfolio/services/getAllService`;
-    const url2 = `http://localhost:8000/photographer-portfolio/services/getService`;
+    const url = `https://photographer-portfolio-server-sygs.vercel.app/photographer-portfolio/services/getAllService`;
+    const url2 = `https://photographer-portfolio-server-sygs.vercel.app/photographer-portfolio/services/getService`;
     const location = useLocation();
     const [services, setServices] = useState([]);
     const { data } = useServices(services, setServices, location.pathname === '/' || location.pathname === '/home' ? url2 : url);

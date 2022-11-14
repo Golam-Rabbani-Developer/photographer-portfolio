@@ -25,7 +25,7 @@ const Addservices = () => {
                 if (picture) {
                     data.picture = picture;
                     data.reviews = [];
-                    axios.post('http://localhost:8000/photographer-portfolio/services/addservice', data)
+                    axios.post('https://photographer-portfolio-server-sygs.vercel.app/photographer-portfolio/services/addservice', data)
                         .then(res => {
                             if (res.status) {
                                 toast("You have added a service successfully")

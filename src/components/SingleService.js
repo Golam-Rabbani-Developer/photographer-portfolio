@@ -8,7 +8,7 @@ import Reviewshower from './Reviewshower';
 
 const SingleService = () => {
     const { id } = useParams()
-    const URL = `http://localhost:8000/photographer-portfolio/services/getSingleService/${id}`
+    const URL = `https://photographer-portfolio-server-sygs.vercel.app/photographer-portfolio/services/getSingleService/${id}`
     const [service, setService] = useState([])
     const { data } = useSingleServices(service, setService, URL)
     const [user] = useAuthState(auth);
